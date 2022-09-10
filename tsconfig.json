@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "strict": true,
+      "sourceMap": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "outDir": "./build",
+      "rootDir": "./src",
+      "moduleResolution": "node",
+      "lib": [
+          "es5",
+          "es6",
+          "ESNext",
+          "ESNext.Array",
+          "ESNext.AsyncIterable",
+          "ESNext.Intl",
+          "ESNext.Symbol"
+      ],
+      "types": [],
+      "skipLibCheck": true
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "exclude": [
+      "node_modules",
+      "build"
+  ]
+}
