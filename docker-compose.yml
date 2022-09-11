@@ -1,0 +1,36 @@
+version: '3.6'
+services:
+  soshme:
+    build: .
+    container_name: housing-cloud
+    ports:
+      - 8080:8080
+    env_file: .env
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    volumes:
+      - ./:/usr/src/app
+    command: [ 'npm', 'run', 'start' ]
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: housing-cloud
+      POSTGRES_MULTIPLE_DATABASES: housing-cloud,housing-cloud_test
+      POSTGRES_USER: housingcloud
+      POSTGRES_PASSWORD: housingcloudpassword
+    volumes:
+      - ./.postgres:/var/lib/postgresql/data
+      - ./scripts/postgres-init:/docker-entrypoint-initdb.d
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9000:8080
+volumes:
+  data:
