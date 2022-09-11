@@ -29,6 +29,42 @@ export class UserService {
   }
 
   /**
+   * @name getUserByEmail - This method retrieves a User by the email.
+   * @param id - UUID of the user.
+   * @returns { Promise<User> } - Returns the User found or error.
+   */
+  async getUserByEmail(email: string): Promise<User> {
+    this.logger.debug(`Fetching user with id: ${email}`);
+    const user = this.userRepository.findOneOrFail({
+      where: {
+        email,
+      },
+    });
+
+    return user;
+  }
+
+  /**
+   * @name getIfUserExist - This method checks if User exist by email.
+   * @param email - The User's email.
+   * @returns
+   */
+  async checkIfUserExist(email: string): Promise<boolean> {
+    this.logger.debug(`Fetching user with email: ${email}`);
+    const user = this.userRepository.findOneOrFail({
+      where: {
+        email,
+      },
+    });
+
+    if (!user) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
    * @name createUser - This method creates a new user.
    * @param userData - The payload required to create new user.
    * @returns { Promise<User> } - Returns the new User or error.

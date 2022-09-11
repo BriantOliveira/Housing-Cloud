@@ -5,6 +5,7 @@ config();
 interface Configuration {
   port: number;
   nodeEnv: string;
+  jwtToken: string;
   typeorm: {
     host: string;
     port: number;
@@ -18,6 +19,7 @@ export const configuration = (): Configuration => {
   const defaultConfiguration: Configuration = {
     port: Number(process.env.PORT) ?? 3000,
     nodeEnv: process.env.NODE_ENV as string,
+    jwtToken: process.env.SECRET_TOKEN as string,
     typeorm: {
       host: process.env.TYPEORM_HOST as string,
       port: Number(process.env.TYPEORM_PORT),
@@ -30,6 +32,7 @@ export const configuration = (): Configuration => {
   const developmentConfiguration: Configuration = {
     port: Number(process.env.PORT) ?? 3000,
     nodeEnv: process.env.NODE_ENV as string,
+    jwtToken: process.env.SECRET_TOKEN as string,
     typeorm: {
       host: process.env.DEVELOPMENT_TYPEORM_HOST as string,
       port: Number(process.env.DEVELOPMENT_TYPEORM_PORT),
@@ -42,6 +45,7 @@ export const configuration = (): Configuration => {
   const stagingConfiguration: Configuration = {
     port: Number(process.env.PORT) ?? 3000,
     nodeEnv: process.env.NODE_ENV as string,
+    jwtToken: process.env.SECRET_TOKEN as string,
     typeorm: {
       host: process.env.STAGING_TYPEORM_HOST as string,
       port: Number(process.env.STAGING_TYPEORM_PORT),
@@ -54,6 +58,7 @@ export const configuration = (): Configuration => {
   const productionConfiguration: Configuration = {
     port: Number(process.env.PORT) ?? 3000,
     nodeEnv: process.env.NODE_ENV as string,
+    jwtToken: process.env.SECRET_TOKEN as string,
     typeorm: {
       host: process.env.PRODUCTION_TYPEORM_HOST as string,
       port: Number(process.env.PRODUCTION_TYPEORM_PORT),
