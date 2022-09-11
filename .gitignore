@@ -1,2 +1,2 @@
-./postgres
-./node_modules
+node_modules
+.postgres
